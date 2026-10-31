@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal Beauty Studio - Personal Color and Makeup Consultant">
+  <title>Personal Beauty Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<header class="navbar">
+  <a href="#home" class="logo">✿ BEAUTY STUDIO</a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#analysis">Analysis</a>
+    <a href="#library">Color Library</a>
+    <a href="#wheel">Color Wheel</a>
+    <a href="#report">Report</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+    <span class="eyebrow">YOUR PERSONAL BEAUTY CONSULTANT</span>
+
+    <h1>
+      Discover Your Colors.
+      <span>Enhance Your Natural Beauty.</span>
+    </h1>
+
+    <p>
+      Find the perfect hijab and makeup shades that harmonize
+      with your natural skin tone.
+    </p>
+
+    <a href="#analysis" class="btn-primary">
+      Start Your Beauty Journey →
+    </a>
+
+    <div class="hero-note">
+      ✿ Personal Color · Hijab · Makeup
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-circle circle-one"></div>
+    <div class="hero-circle circle-two"></div>
+
+    <div class="hero-decoration">
+      <span>BEAUTY</span>
+      <strong>IS YOU</strong>
+      <small>Discover your true colors</small>
+    </div>
+
+    <div class="floating-flower">✿</div>
+    <div class="floating-star">✧</div>
+  </div>
+
+</section>
+
+<!-- ANALYSIS -->
+
+<section class="section" id="analysis">
+
+  <div class="section-title">
+    <span>STEP 01</span>
+    <h2>Personal Color Analysis</h2>
+    <p>Start by uploading your natural face photo.</p>
+  </div>
+
+  <div class="analysis-grid">
+
+    <div class="panel">
+      <h3>Your Face Photo</h3>
+
+      <div class="photo-box">
+        <img id="facePreview" alt="Uploaded face">
+        <div id="emptyPhoto">
+          <span>♡</span>
+          <p>Your photo will appear here</p>
+        </div>
+      </div>
+
+      <input type="file" id="photoInput" accept="image/*">
+
+      <label for="photoInput" class="btn-secondary">
+        Upload Photo
+      </label>
+
+      <button id="cameraBtn" class="btn-secondary">
+        Open Camera
+      </button>
+
+      <video id="camera" autoplay playsinline hidden></video>
+
+      <button id="captureBtn" class="btn-secondary" hidden>
+        Capture Photo
+      </button>
+
+      <p class="helper">
+        Use a clear photo with natural lighting and no beauty filter.
+      </p>
+    </div>
+
+    <div class="panel">
+
+      <h3>Your Beauty Profile</h3>
+
+      <label for="skinTone">Skin Tone</label>
+      <select id="skinTone">
+        <option value="Light">Light</option>
+        <option value="Light Medium">Light Medium</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="Tan">Tan</option>
+        <option value="Deep">Deep</option>
+      </select>
+
+      <label for="undertone">Undertone</label>
+      <select id="undertone">
+        <option value="Warm">Warm</option>
+        <option value="Cool">Cool</option>
+        <option value="Neutral">Neutral</option>
+      </select>
+
+      <label for="hairColor">Natural Hair Color</label>
+      <select id="hairColor">
+        <option>Black</option>
+        <option>Dark Brown</option>
+        <option>Light Brown</option>
+      </select>
+
+      <label for="eyeColor">Eye Color</label>
+      <select id="eyeColor">
+        <option>Dark Brown</option>
+        <option>Brown</option>
+        <option>Black</option>
+        <option>Light Brown</option>
+      </select>
+
+      <button id="analyzeBtn" class="btn-primary full">
+        Analyze My Beauty ✨
+      </button>
+
+    </div>
+  </div>
+
+  <div id="analysisResult" class="result-panel" hidden>
+
+    <span class="eyebrow">YOUR BEAUTY PROFILE</span>
+
+    <h2 id="seasonResult">Your Season</h2>
+
+    <p id="descriptionResult"></p>
+
+    <div class="result-grid">
+      <div>
+        <small>SKIN TONE</small>
+        <h3 id="resultSkin"></h3>
+      </div>
+
+      <div>
+        <small>UNDERTONE</small>
+        <h3 id="resultUnder"></h3>
+      </div>
+
+      <div>
+        <small>SEASONAL COLOR</small>
+        <h3 id="resultSeason"></h3>
+      </div>
+    </div>
+
+    <h3>Recommended Shades</h3>
+    <div id="recommendedColors" class="recommended-colors"></div>
+
+  </div>
+</section>
+
+<!-- COLOR LIBRARY -->
+
+<section class="section library-section" id="library">
+
+  <div class="section-title">
+    <span>STEP 02</span>
+    <h2>500 Beauty Color Library</h2>
+    <p>Explore a collection of colors for your beauty style.</p>
+  </div>
+
+  <div class="filter-bar">
+
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+      <option value="Hijab">Hijab Colors</option>
+      <option value="Foundation">Foundation</option>
+      <option value="Lipstick">Lipstick</option>
+      <option value="Blush">Blush</option>
+      <option value="Eyeshadow">Eyeshadow</option>
+    </select>
+
+    <select id="matchFilter">
+      <option value="all">All Colors</option>
+      <option value="recommended">Recommended Colors</option>
+    </select>
+
+    <input id="colorSearch" placeholder="Search color...">
+
+  </div>
+
+  <div id="colorLibrary" class="color-grid"></div>
+
+  <p id="colorCount" class="helper"></p>
+
+</section>
+
+<!-- PERSONAL COLOR WHEEL -->
+
+<section class="section wheel-section" id="wheel">
+
+  <div class="section-title">
+    <span>STEP 03</span>
+    <h2>Your Personal Color Wheel</h2>
+    <p>Your face in the center, surrounded by your recommended colors.</p>
+  </div>
+
+  <div class="wheel-container">
+
+    <div class="color-wheel">
+
+      <div class="wheel-face">
+        <img id="wheelFace" alt="Your original face">
+        <div id="wheelPlaceholder">
+          ♡
+          <small>Your Face</small>
+        </div>
+      </div>
+
+      <div id="wheelColors"></div>
+
+    </div>
+
+  </div>
+
+  <div class="wheel-info">
+
+    <h3>Your Recommended Palette ✿</h3>
+
+    <p>
+      Select a color surrounding your photo to explore your perfect shade.
+    </p>
+
+    <div id="selectedColor">
+      Select your favorite color
+    </div>
+
+    <div class="selection-actions">
+      <label for="hijabColor">Selected Hijab Color</label>
+      <input type="color" id="hijabColor" value="#D9A6A0">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- BEAUTY REPORT -->
+
+<section class="section report-section" id="report">
+
+  <div class="section-title">
+    <span>STEP 04</span>
+    <h2>Your Personal Beauty Report</h2>
+    <p>Your personal color analysis in one beautiful report.</p>
+  </div>
+
+  <div class="report-card">
+
+    <div class="report-header">
+      <h3>✿ PERSONAL BEAUTY STUDIO</h3>
+      <span>BEAUTY REPORT</span>
+    </div>
+
+    <div id="reportContent">
+      <p>Complete your beauty analysis to generate your report.</p>
+    </div>
+
+    <button id="downloadReport" class="btn-primary">
+      Download PDF Report ↓
+    </button>
+
+  </div>
+
+</section>
+
+<footer>
+  <h3>✿ PERSONAL BEAUTY STUDIO</h3>
+  <p>Discover your colors. Enhance your natural beauty.</p>
+  <small>© 2026 Personal Beauty Studio</small>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
